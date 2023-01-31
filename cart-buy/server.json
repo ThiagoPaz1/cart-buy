@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Xbox series s",
+      "stock": 5
+    },
+    {
+      "id": 2,
+      "name": "Notebook",
+      "stock": 3
+    },
+    {
+      "id": 3,
+      "name": "Tv Led Smart",
+      "stock": 2
+    }
+  ]
+}
