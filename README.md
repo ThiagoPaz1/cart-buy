@@ -1,2 +1,2 @@
-# cart-buy
-App web de carrinho de compras.
+# Seja bem vindo :smile:
+## App web de carrinho de compras.
