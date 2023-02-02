@@ -1,12 +1,7 @@
 import { api } from './api'
+import { Prouduct } from '../types'
 
-interface Prouducts {
-  id: number
-  name: string
-  stock: number
-}
-
-export async function getAllProducts(): Promise<Prouducts[]> {
+export async function getAllProducts(): Promise<Prouduct[]> {
   const request = await api.get('/products')
   const response = await request.data
 
