@@ -1,4 +1,5 @@
 import { Prouduct } from "../../../types"
+import { priceFormat } from "../../../utils/priceFormat"
 
 export function Product({...props}: Prouduct) {
   return (
@@ -7,7 +8,7 @@ export function Product({...props}: Prouduct) {
         { props.name }
       </h3>
       <p>
-        { props.price }
+        { priceFormat(props.price) }
       </p>
     </div>
   )
