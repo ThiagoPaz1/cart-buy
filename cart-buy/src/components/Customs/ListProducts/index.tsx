@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ClipLoader } from 'react-spinners'
 
+import { Product } from '../Product'
 import { getAllProducts } from '../../../services/getAllProducts'
 import { Prouduct } from '../../../types'
 
@@ -17,11 +18,13 @@ export function ListProducts() {
     <>
       {
         products.length ?
-        <ul>
-          {
-            products.map(i => <li key={i.id}>{i.name}</li> )
-          }
-        </ul> :
+        products.map(i => 
+          <Product
+            id={i.id}
+            price={i.price}
+            stock={i.stock}
+            name={i.name}
+          />) :
         <ClipLoader color="#9A2EFE" />
       }
     </>
