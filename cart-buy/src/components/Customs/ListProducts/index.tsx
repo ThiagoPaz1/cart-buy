@@ -11,10 +11,13 @@ export function ListProducts({ products }: ListProductsProps) {
         products.length ?
         products.map(i => 
           <CardProduct
-            id={i.id}
-            price={i.price}
-            stock={i.stock}
-            name={i.name}
+            product={{
+              id: i.id,
+              name: i.name,
+              stock: i.stock,
+              quantity: i.quantity,
+              price: i.price
+            }}
           />) :
         <ClipLoader color="#9A2EFE" />
       }

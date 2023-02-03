@@ -2,33 +2,63 @@ import { useState, useContext } from "react"
 
 import { Button } from "../Button"
 import { ProductContext } from "../../../context/ProductContext"
-import { Product } from "../../../types"
+import { CardProductProps } from "./types"
 import { priceFormat } from "../../../utils/priceFormat"
 
-export function CardProduct({...props}: Product) {
+export function CardProduct({product, productQuantity}: CardProductProps) {
+  const [quantity, setQuantity] = useState(1)
   const { productsInCart, setProductsInCart } = useContext(ProductContext)
 
-  function addProductInCart() {
-    const product = {
-      id: props.id,
-      name: props.name,
-      price: props.price,
-      quantity: 1
+  function handleClick() {
+    if (!productQuantity) {
+      addProductInCart()
     }
-
-    setProductsInCart([...productsInCart, product])    
   }
 
+  function addProductInCart() {
+    const newProduct: any = {
+      id: product.id,
+      name: product.name,
+      stock: product.stock,
+      price: product.price,
+      quantity: quantity
+    }
+
+    setProductsInCart([...productsInCart, newProduct])
+  }
+
+  function addProductQuantity(signal: string) {
+
+  }
+  
   return (
-    <div key={props.id}>
+    <div key={product.id}>
       <h3>
-        { props.name }
+        { product.name }
       </h3>
       <p>
-        { priceFormat(props.price) }
+        { priceFormat(product.price) }
       </p>
-      <Button onClick={() => addProductInCart()}>
-        Adicionar ao carrinho
+      <p>
+        { productQuantity && product.quantity }
+      </p>
+
+      <Button onClick={handleClick}>
+        {
+          productQuantity ?
+          (
+            <div>
+              <span onClick={() => addProductQuantity("-")}>
+                -
+              </span>
+              <span>{product.quantity}</span>
+              <span onClick={() => addProductQuantity("+")}>
+                +
+              </span>
+            </div>
+          ) :
+          "Adicionar ao carrinho"
+        }
       </Button>
     </div>
   )

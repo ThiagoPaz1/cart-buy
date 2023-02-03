@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 
 import { ListProducts } from "../Customs/ListProducts"
 import { getAllProducts } from "../../services/getAllProducts"
@@ -12,11 +12,12 @@ export function Home() {
       .then(res => setProducts(res))
       .catch(error => console.log(error))
   }, [])
-  
+
+
   return (
     <>
       <main>
-        <ListProducts products={products}/>
+        <ListProducts products={products} />
       </main>
     </>
   )
