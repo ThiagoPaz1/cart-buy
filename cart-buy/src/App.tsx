@@ -1,9 +1,12 @@
 import { Home } from './components/Home'
+import { ProductProvider } from './context/ProductContext'
 
 function App() {
   return (
     <>
-     <Home /> 
+      <ProductProvider>
+        <Home />
+     </ProductProvider>
     </>
   )
 }

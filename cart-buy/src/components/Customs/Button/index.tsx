@@ -1,8 +1,8 @@
-import { ReactNode } from "react"
+import { ButtonProps } from "./types"
 
-export function Button(children: ReactNode) {
+export function Button({ children, onClick }: ButtonProps) {
   return (
-    <button>
+    <button onClick={() => onClick()}>
       { children }
     </button>
   )

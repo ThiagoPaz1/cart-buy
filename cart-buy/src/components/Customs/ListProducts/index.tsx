@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
-import { ClipLoader } from 'react-spinners'
+import { useEffect, useState } from "react"
+import { ClipLoader } from "react-spinners"
 
-import { Product } from '../Product'
-import { getAllProducts } from '../../../services/getAllProducts'
-import { Prouduct } from '../../../types'
+import { CardProduct } from "../CardProduct"
+import { getAllProducts } from "../../../services/getAllProducts"
+import { Product } from "../../../types"
 
 export function ListProducts() {
-  const [products, setProducts] = useState<Prouduct[]>([])
+  const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
     getAllProducts()
@@ -19,7 +19,7 @@ export function ListProducts() {
       {
         products.length ?
         products.map(i => 
-          <Product
+          <CardProduct
             id={i.id}
             price={i.price}
             stock={i.stock}
