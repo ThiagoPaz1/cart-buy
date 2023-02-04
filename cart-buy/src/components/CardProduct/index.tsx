@@ -1,9 +1,9 @@
 import { useState, useContext } from "react"
 
-import { Button } from "../Button"
-import { ProductContext } from "../../../context/ProductContext"
+import { Button } from "../Customs/Button"
+import { ProductContext } from "../../context/ProductContext"
 import { CardProductProps } from "./types"
-import { priceFormat } from "../../../utils/priceFormat"
+import { priceFormat } from "../../utils/priceFormat"
 
 export function CardProduct({product, productQuantity}: CardProductProps) {
   const [quantity, setQuantity] = useState(1)
@@ -26,6 +26,7 @@ export function CardProduct({product, productQuantity}: CardProductProps) {
 
     setProductsInCart([...productsInCart, newProduct])
   }
+
 
   function addProductQuantity(signal: string) {
 

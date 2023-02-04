@@ -1,6 +1,7 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 
-import { ListProducts } from "../Customs/ListProducts"
+import { ListProducts } from "../ListProducts"
+import { Cart } from "../Cart"
 import { getAllProducts } from "../../services/getAllProducts"
 import { Product } from "../../types"
 
@@ -16,9 +17,8 @@ export function Home() {
 
   return (
     <>
-      <main>
-        <ListProducts products={products} />
-      </main>
+      <ListProducts products={products} />
+      <Cart />
     </>
   )
 }

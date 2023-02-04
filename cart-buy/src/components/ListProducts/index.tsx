@@ -6,7 +6,7 @@ import { ListProductsProps } from "./types"
 export function ListProducts({ products }: ListProductsProps) {
 
   return (
-    <>
+    <main>
       {
         products.length ?
         products.map(i => 
@@ -21,6 +21,6 @@ export function ListProducts({ products }: ListProductsProps) {
           />) :
         <ClipLoader color="#9A2EFE" />
       }
-    </>
+    </main>
   )
 }
