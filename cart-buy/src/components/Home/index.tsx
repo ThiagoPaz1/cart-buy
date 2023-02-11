@@ -1,24 +1,25 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 
-import { ListProducts } from "../Customs/ListProducts"
+// Queries
 import { getAllProducts } from "../../services/getAllProducts"
+
+import { ListProducts } from "./ListProducts"
 import { Product } from "../../types"
 
-export function Home() {
+export function HomeComponent() {
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
-    getAllProducts()
-      .then(res => setProducts(res))
-      .catch(error => console.log(error))
+    setTimeout(() => {
+      getAllProducts()
+        .then(res => (console.log(res), setProducts(res)))
+        .catch(error => console.log(error))
+    }, 2000)
   }, [])
 
-
   return (
-    <>
-      <main>
-        <ListProducts products={products} />
-      </main>
-    </>
+    <div>
+      <ListProducts products={products} />
+    </div>
   )
 }

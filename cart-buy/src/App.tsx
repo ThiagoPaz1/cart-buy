@@ -1,5 +1,5 @@
 import { Home } from './components/Home'
-import { ProductProvider } from './context/ProductContext'
+import { ProductProvider } from './context/ProductInCartContext'
 
 function App() {
   return (
