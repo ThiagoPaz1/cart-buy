@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
 
+// Queries
 import { getAllProducts } from "../../services/getAllProducts"
+
+import { ListProducts } from "./ListProducts"
 import { Product } from "../../types"
 
 export function HomeComponent() {
@@ -11,13 +14,13 @@ export function HomeComponent() {
       getAllProducts()
         .then(res => setProducts(res))
         .catch(error => console.log(error))
-    }, 3000)
+    }, 2000)
   }, [])
 
 
   return (
-    <>
-      
-    </>
+    <div>
+      <ListProducts products={products} />
+    </div>
   )
 }

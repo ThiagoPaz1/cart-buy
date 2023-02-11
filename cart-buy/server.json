@@ -3,19 +3,16 @@
     {
       "id": 1,
       "name": "Xbox series s",
-      "stock": 5,
       "price": 2500
     },
     {
       "id": 2,
       "name": "Notebook",
-      "stock": 3,
       "price": 3500
     },
     {
       "id": 3,
       "name": "Tv Led Smart",
-      "stock": 2,
       "price": 2000
     }
   ]
