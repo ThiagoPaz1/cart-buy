@@ -1,4 +1,6 @@
-import { toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
+
+import "react-toastify/dist/ReactToastify.css"
 
 export function notify(msg: string, type: string) {
   if (type === "success") {
@@ -7,4 +9,8 @@ export function notify(msg: string, type: string) {
       position: toast.POSITION.TOP_CENTER,
     })
   }
+}
+
+export function Notification() {
+  return <ToastContainer />
 }

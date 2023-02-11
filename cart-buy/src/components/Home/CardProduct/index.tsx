@@ -2,16 +2,15 @@ import { useContext } from "react"
 
 // Components
 import { Button } from "../../Custom/Button"
-import { Notification } from "../../Custom/Notification"
 
 // Contexts, and custom hooks
 import { ProductInCartContext } from "../../../context/ProductInCartContext"
+import { notify, Notification } from "../../../hooks/useNotification"
 
 // Types
 import { CardProductProps } from "./types"
 
 // Others
-import { notify } from "../../../utils/notify"
 import { priceFormat } from "../../../utils/priceFormat"
 
 export function CardProduct({ product }: CardProductProps) {
@@ -34,7 +33,7 @@ export function CardProduct({ product }: CardProductProps) {
 
   return (
     <li key={product.id}>
-      <img 
+      <img
         src={product.image}
         width={200}
         alt="Imagem do produto"
