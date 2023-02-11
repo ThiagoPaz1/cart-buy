@@ -1,10 +1,17 @@
 import { useContext } from "react"
 
-import { Button } from "../../Customs/Button"
-import { Notification } from "../../Customs/Notification"
+// Components
+import { Button } from "../../Custom/Button"
+import { Notification } from "../../Custom/Notification"
 
+// Contexts, and custom hooks
 import { ProductInCartContext } from "../../../context/ProductInCartContext"
+
+// Types
 import { CardProductProps } from "./types"
+
+// Others
+import { notify } from "../../../utils/notify"
 import { priceFormat } from "../../../utils/priceFormat"
 
 export function CardProduct({ product }: CardProductProps) {
@@ -21,6 +28,8 @@ export function CardProduct({ product }: CardProductProps) {
         quantity: 1
       }
     ])
+
+    notify("Produto adicionado ao carrinho!", "success")
   }
 
   return (
@@ -38,10 +47,12 @@ export function CardProduct({ product }: CardProductProps) {
       <p>
         {priceFormat(product.price)}
       </p>
-      <Notification />
+      
       <Button onClick={handleAddProductInCart}>
         Adicionar ao carrinho
       </Button>
+
+      <Notification />
     </li>
   )
 }

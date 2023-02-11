@@ -7,9 +7,9 @@ export function ListProducts({ products }: ListProductsProps) {
   return (
     <ul>
       {
-        products ?
+        products.length ?
           products.map(i =>
-            <CardProduct product={i}/>  
+            <CardProduct product={i} />
           ) :
           <ClipLoader color="#9A2EFE" />
       }
