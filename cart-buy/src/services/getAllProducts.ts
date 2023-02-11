@@ -16,7 +16,12 @@ const imgs: string[] = [xboxImg, notebookImg, tvImg]
 export async function getAllProducts(): Promise<Response[]> {
   const request = await api.get("/products")
   const response = await request.data
-  const data = response.map((el: Response, index: number) => el.image = imgs[index])
+  const data = response.map((el: Response, index: number) => (
+    {
+      ...el,
+      image: imgs[index]
+    }
+  ))
   
   return data
 }

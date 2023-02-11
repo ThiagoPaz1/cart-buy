@@ -12,11 +12,10 @@ export function HomeComponent() {
   useEffect(() => {
     setTimeout(() => {
       getAllProducts()
-        .then(res => setProducts(res))
+        .then(res => (console.log(res), setProducts(res)))
         .catch(error => console.log(error))
     }, 2000)
   }, [])
-
 
   return (
     <div>
