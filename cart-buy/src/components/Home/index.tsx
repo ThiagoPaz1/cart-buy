@@ -9,15 +9,19 @@ export function Home() {
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
-    getAllProducts()
-      .then(res => setProducts(res))
-      .catch(error => console.log(error))
+    setTimeout(() => {
+      getAllProducts()
+        .then(res => setProducts(res))
+        .catch(error => console.log(error))
+    }, 3000)
   }, [])
 
 
   return (
     <>
-      <ListProducts products={products} />
+      {/* <main>
+        <ListProducts products={products} />
+      </main> */}
       <Cart />
     </>
   )

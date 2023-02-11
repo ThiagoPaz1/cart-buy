@@ -27,7 +27,6 @@ export function CardProduct({product, productQuantity}: CardProductProps) {
     setProductsInCart([...productsInCart, newProduct])
   }
 
-
   function addProductQuantity(signal: string) {
 
   }
