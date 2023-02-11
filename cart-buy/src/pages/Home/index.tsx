@@ -4,7 +4,7 @@ export function Home() {
   return (
     <main>
       <h1>
-        Nossos produtos
+        Produtos disponíveis
       </h1>
 
       <HomeComponent />

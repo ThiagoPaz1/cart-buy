@@ -1,6 +1,7 @@
 import { useContext } from "react"
 
 import { Button } from "../../Customs/Button"
+import { Notification } from "../../Customs/Notification"
 
 import { ProductInCartContext } from "../../../context/ProductInCartContext"
 import { CardProductProps } from "./types"
@@ -17,14 +18,18 @@ export function CardProduct({ product }: CardProductProps) {
         name: product.name,
         image: product.image,
         price: product.price,
-        quantity: Number(product.quantity)
+        quantity: 1
       }
     ])
   }
 
   return (
     <li key={product.id}>
-      <img src={product.image} alt="Imagem do produto" />
+      <img 
+        src={product.image}
+        width={200}
+        alt="Imagem do produto"
+      />
       
       <h3>
         {product.name}
@@ -33,7 +38,7 @@ export function CardProduct({ product }: CardProductProps) {
       <p>
         {priceFormat(product.price)}
       </p>
-
+      <Notification />
       <Button onClick={handleAddProductInCart}>
         Adicionar ao carrinho
       </Button>
