@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from "react"
 
 interface ProductInCart {
+  id: number
   name: string
   price: number
   image: string

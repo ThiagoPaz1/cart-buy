@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react"
 
-import { ListProducts } from "../ListProducts"
-import { Cart } from "../Cart"
 import { getAllProducts } from "../../services/getAllProducts"
 import { Product } from "../../types"
 
-export function Home() {
+export function HomeComponent() {
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
@@ -19,10 +17,7 @@ export function Home() {
 
   return (
     <>
-      {/* <main>
-        <ListProducts products={products} />
-      </main> */}
-      <Cart />
+      
     </>
   )
 }

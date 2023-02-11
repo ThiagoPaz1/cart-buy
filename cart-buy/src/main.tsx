@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { Home } from "./pages/Home"
 import { Cart } from "./pages/Cart"
 
-import { ProductProvider } from "./context/ProductContext"
+import { ProductInCartProvider } from "./context/ProductInCartContext"
 
 const router = createBrowserRouter([
   {
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ProductProvider>
+    <ProductInCartProvider>
       <RouterProvider router={router} />
-    </ProductProvider>
+    </ProductInCartProvider>
   </React.StrictMode>,
 )
