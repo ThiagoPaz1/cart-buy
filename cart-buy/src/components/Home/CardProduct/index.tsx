@@ -32,16 +32,31 @@ export function CardProduct({ product }: CardProductProps) {
   }
 
   function handleAddProductInCart() {
-    setProductsInCart([
-      ...productsInCart,
-      {
-        id: product.id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        quantity: quantityProduct
+    const findProduct = productsInCart.find(i => i.id === product.id)
+
+    if (findProduct) {
+      for (let i of productsInCart) {
+        if (i.id === product.id) {
+          i.quantity = i.quantity + quantityProduct 
+        } 
       }
-    ])
+      quantityProduct > 1 &&
+        setQuantityProduct(1)
+    } else {
+      setProductsInCart([
+        ...productsInCart,
+        {
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          price: product.price,
+          quantity: quantityProduct
+        }
+      ])
+
+      quantityProduct > 1 &&
+        setQuantityProduct(1)
+    }
 
     notify("Produto adicionado ao carrinho!", "success")
   }
@@ -65,7 +80,9 @@ export function CardProduct({ product }: CardProductProps) {
       <button onClick={() => handleChangeQuantityProduct("-")}>
         -
       </button>
-      <span>{quantityProduct}</span>
+      <span>
+        {quantityProduct}
+      </span>
       <button onClick={() => handleChangeQuantityProduct("+")}>
         +
       </button>
