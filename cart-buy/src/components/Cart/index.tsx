@@ -1,17 +1,21 @@
 import { useContext } from "react"
 
-import { ListProducts } from "../ListProducts" 
-import { ProductContext } from "../../context/ProductInCartContext"
+import { ListProductsInCart } from "./ListProductsInCart"
 
-export function Cart() {
-  const { productsInCart } = useContext(ProductContext)
+import { ProductInCartContext } from "../../context/ProductInCartContext"
+
+export function CartComponent() {
+  const { productsInCart } = useContext(ProductInCartContext)
 
   return (
     <div>
-      <ListProducts
-        products={productsInCart}
-        productQuantity={true}
-      />
+      <h1>Produtos no carrinho</h1>
+
+      <div>
+        <ListProductsInCart
+          products={productsInCart}
+        />
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 
 // Components
 import { Button } from "../../Custom/Button"
@@ -8,28 +8,13 @@ import { ProductInCartContext } from "../../../context/ProductInCartContext"
 import { notify, Notification } from "../../../hooks/useNotification"
 
 // Types
-import { CardProductProps } from "./types"
+import { CardProductInCartProps } from "./types"
 
 // Others
 import { priceFormat } from "../../../utils/priceFormat"
 
-export function CardProduct({ product }: CardProductProps) {
-  const [quantityProduct, setQuantityProduct] = useState(1)
+export function CardProductInCart({ product }: CardProductInCartProps) {
   const { productsInCart, setProductsInCart } = useContext(ProductInCartContext)
-
-  function handleChangeQuantityProduct(signal: string) {
-    if (signal === "-") {
-      if (quantityProduct === 1) {
-        setQuantityProduct(1)
-      } else {
-        setQuantityProduct(quantityProduct - 1)
-      }
-    }
-
-    if (signal === "+") {
-      setQuantityProduct(quantityProduct + 1)
-    }
-  }
 
   function handleAddProductInCart() {
     setProductsInCart([
@@ -39,7 +24,7 @@ export function CardProduct({ product }: CardProductProps) {
         name: product.name,
         image: product.image,
         price: product.price,
-        quantity: quantityProduct
+        quantity: 1
       }
     ])
 
@@ -62,16 +47,9 @@ export function CardProduct({ product }: CardProductProps) {
         {priceFormat(product.price)}
       </p>
 
-      <button onClick={() => handleChangeQuantityProduct("-")}>
-        -
-      </button>
-      <span>{quantityProduct}</span>
-      <button onClick={() => handleChangeQuantityProduct("+")}>
-        +
-      </button>
-      <Button onClick={handleAddProductInCart}>
-        Adicionar ao carrinho
-      </Button>
+      <p>
+        { product.quantity }
+      </p>
 
       <Notification />
     </li>
