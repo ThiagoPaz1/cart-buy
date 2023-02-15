@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 
 // Components
 import { Button } from "../../Custom/Button"
@@ -16,6 +16,23 @@ export function CardProductInCart({ product, notifyRemoveProduct }: CardProductI
   const [quantityProduct, setQuantityProduct] = useState(Number(product.quantity))
   const { productsInCart, setProductsInCart } = useContext(ProductInCartContext)
 
+  useEffect(() => {
+    if (quantityProduct >= 1) {
+      let newListProduct: any[] = []
+
+      for (let i of productsInCart) {
+        if (i.id === product.id) {
+          i.quantity = quantityProduct
+          newListProduct.push(i)
+        } else {
+          newListProduct.push(i)
+        }
+      }
+
+      setProductsInCart(newListProduct)
+    }
+  }, [quantityProduct])
+
   function handleChangeQuantityProduct(signal: string) {
     if (signal === "-") {
       if (quantityProduct === 1) {
@@ -32,7 +49,7 @@ export function CardProductInCart({ product, notifyRemoveProduct }: CardProductI
 
   function handleRemoveProduct() {
     const updateListProducts = productsInCart.filter(i => i.id !== product.id)
-    
+
     setProductsInCart(updateListProducts)
     notifyRemoveProduct(product.name)
   }
@@ -52,7 +69,7 @@ export function CardProductInCart({ product, notifyRemoveProduct }: CardProductI
       <p>
         {priceFormat(product.price)}
       </p>
-      
+
       <div>
         <button onClick={() => handleChangeQuantityProduct("-")}>
           -

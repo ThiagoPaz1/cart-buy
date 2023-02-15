@@ -6,7 +6,7 @@ export function notify(msg: string, type: string) {
   if (type === "success") {
     console.log(msg)
     toast.success(msg, {
-      autoClose: 3000,
+      autoClose: 2000,
       position: toast.POSITION.TOP_CENTER,
     })
   }

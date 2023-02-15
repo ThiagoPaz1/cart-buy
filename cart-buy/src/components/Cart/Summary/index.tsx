@@ -5,11 +5,14 @@ import { Button } from "../../Custom/Button"
 import { notify, Notification } from "../../../hooks/useNotification"
 import { SummaryProps } from "./types"
 
+import { priceFormat } from "../../../utils/priceFormat"
+
 export function Summary({ quantityProducts, amount }: SummaryProps) {
   const [disabledButton, setDisabledButton] = useState(false)
 
   useEffect(() => {
-    if (amount > 0) {
+    if (amount === 0) {
+
       setDisabledButton(true)
     }
   }, [amount])
@@ -27,7 +30,7 @@ export function Summary({ quantityProducts, amount }: SummaryProps) {
       </span>
       
       <strong>
-        {amount}
+        {priceFormat(amount)}
       </strong>
 
       <Button
