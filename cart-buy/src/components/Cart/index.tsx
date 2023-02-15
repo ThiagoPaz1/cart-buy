@@ -11,12 +11,16 @@ export function CartComponent() {
 
   useEffect(() => {
     if (productsInCart.length) {
-      setAmount((productsInCart[0].price * productsInCart[0].quantity))
+      if (productsInCart.length === 1) {
+        setAmount(productsInCart[0].price * productsInCart[0].quantity)
+      }
 
       if (productsInCart.length > 1) {
-        const productsInCartReduce: any = productsInCart
-        const amount = productsInCartReduce.reduce((accumulator: any, currentValue: any) =>
-          (accumulator.price * accumulator.quantity) + (currentValue.price * currentValue.quantity))
+        let amount = 0 
+        
+        for (let i of productsInCart) {
+          amount = amount + (i.price * i.quantity)
+        }
 
         setAmount(amount)
       }
