@@ -37,9 +37,10 @@ export function CardProduct({ product }: CardProductProps) {
     if (findProduct) {
       for (let i of productsInCart) {
         if (i.id === product.id) {
-          i.quantity = i.quantity + quantityProduct 
-        } 
+          i.quantity = i.quantity + quantityProduct
+        }
       }
+
       quantityProduct > 1 &&
         setQuantityProduct(1)
     } else {
@@ -68,7 +69,7 @@ export function CardProduct({ product }: CardProductProps) {
         width={200}
         alt="Imagem do produto"
       />
-      
+
       <h3>
         {product.name}
       </h3>
@@ -76,16 +77,19 @@ export function CardProduct({ product }: CardProductProps) {
       <p>
         {priceFormat(product.price)}
       </p>
+      
+      <div>
+        <button onClick={() => handleChangeQuantityProduct("-")}>
+          -
+        </button>
+        <span>
+          {quantityProduct}
+        </span>
+        <button onClick={() => handleChangeQuantityProduct("+")}>
+          +
+        </button>
+      </div>
 
-      <button onClick={() => handleChangeQuantityProduct("-")}>
-        -
-      </button>
-      <span>
-        {quantityProduct}
-      </span>
-      <button onClick={() => handleChangeQuantityProduct("+")}>
-        +
-      </button>
       <Button onClick={handleAddProductInCart}>
         Adicionar ao carrinho
       </Button>

@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 // Components
 import { Button } from "../../Custom/Button"
@@ -14,21 +14,27 @@ import { CardProductInCartProps } from "./types"
 import { priceFormat } from "../../../utils/priceFormat"
 
 export function CardProductInCart({ product }: CardProductInCartProps) {
+  const [quantityProduct, setQuantityProduct] = useState(Number(product.quantity))
   const { productsInCart, setProductsInCart } = useContext(ProductInCartContext)
 
-  function handleAddProductInCart() {
-    setProductsInCart([
-      ...productsInCart,
-      {
-        id: product.id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        quantity: 1
+  function handleChangeQuantityProduct(signal: string) {
+    if (signal === "-") {
+      if (quantityProduct === 1) {
+        setQuantityProduct(1)
+      } else {
+        setQuantityProduct(Number(quantityProduct) - 1)
       }
-    ])
+    }
 
-    notify("Produto adicionado ao carrinho!", "success")
+    if (signal === "+") {
+      setQuantityProduct(Number(quantityProduct) + 1)
+    }
+  }
+
+  function handleRemoveProduct(id: number) {
+    const updateListProducts = productsInCart.filter(i => i.id !== id)
+
+    setProductsInCart(updateListProducts)
   }
 
   return (
@@ -38,7 +44,7 @@ export function CardProductInCart({ product }: CardProductInCartProps) {
         width={200}
         alt="Imagem do produto"
       />
-      
+
       <h3>
         {product.name}
       </h3>
@@ -46,10 +52,22 @@ export function CardProductInCart({ product }: CardProductInCartProps) {
       <p>
         {priceFormat(product.price)}
       </p>
+      
+      <div>
+        <button onClick={() => handleChangeQuantityProduct("-")}>
+          -
+        </button>
+        <span>
+          {quantityProduct}
+        </span>
+        <button onClick={() => handleChangeQuantityProduct("+")}>
+          +
+        </button>
+      </div>
 
-      <p>
-        { product.quantity }
-      </p>
+      <Button onClick={() => handleRemoveProduct(product.id)}>
+        Remover produto
+      </Button>
 
       <Notification />
     </li>
