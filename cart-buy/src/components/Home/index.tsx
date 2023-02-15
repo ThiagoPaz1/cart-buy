@@ -10,11 +10,11 @@ export function HomeComponent() {
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       getAllProducts()
-        .then(res => (console.log(res), setProducts(res)))
+        .then(res => (setProducts(res)))
         .catch(error => console.log(error))
-    }, 2000)
+    // }, 2000)
   }, [])
 
   return (

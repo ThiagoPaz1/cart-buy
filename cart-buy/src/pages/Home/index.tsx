@@ -1,13 +1,17 @@
 import { HomeComponent } from "../../components/Home"
+import { Menu } from "../../components/Menu"
 
 export function Home() {
   return (
-    <main>
-      <h1>
-        Produtos disponíveis
-      </h1>
+    <>
+      <Menu />
+      <main>
+        <h1>
+          Produtos disponíveis
+        </h1>
 
-      <HomeComponent />
-    </main>
+        <HomeComponent />
+      </main>
+    </>
   )
 }
