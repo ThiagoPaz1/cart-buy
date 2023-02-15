@@ -5,7 +5,6 @@ import { Button } from "../../Custom/Button"
 
 // Contexts, and custom hooks
 import { ProductInCartContext } from "../../../context/ProductInCartContext"
-import { notify, Notification } from "../../../hooks/useNotification"
 
 // Types
 import { CardProductInCartProps } from "./types"
@@ -13,7 +12,7 @@ import { CardProductInCartProps } from "./types"
 // Others
 import { priceFormat } from "../../../utils/priceFormat"
 
-export function CardProductInCart({ product }: CardProductInCartProps) {
+export function CardProductInCart({ product, notifyRemoveProduct }: CardProductInCartProps) {
   const [quantityProduct, setQuantityProduct] = useState(Number(product.quantity))
   const { productsInCart, setProductsInCart } = useContext(ProductInCartContext)
 
@@ -31,10 +30,11 @@ export function CardProductInCart({ product }: CardProductInCartProps) {
     }
   }
 
-  function handleRemoveProduct(id: number) {
-    const updateListProducts = productsInCart.filter(i => i.id !== id)
-
+  function handleRemoveProduct() {
+    const updateListProducts = productsInCart.filter(i => i.id !== product.id)
+    
     setProductsInCart(updateListProducts)
+    notifyRemoveProduct(product.name)
   }
 
   return (
@@ -65,11 +65,9 @@ export function CardProductInCart({ product }: CardProductInCartProps) {
         </button>
       </div>
 
-      <Button onClick={() => handleRemoveProduct(product.id)}>
+      <Button onClick={handleRemoveProduct}>
         Remover produto
       </Button>
-
-      <Notification />
     </li>
   )
 }
